@@ -1,13 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  
 }
 
 .container {
-  min-width: 100vw;
-  min-height: 100vh;
-  height: 100%;
-  background-color: rgb(230, 214, 164);
+  box-sizing: border-box;
+  width: 99.3vw;
+  height: 98.7vh;
+  background-color: rgb(247, 241, 222);
+  overflow: hidden;
 }
 
 .dot{
@@ -33,7 +33,11 @@ color: black;
   width: 100%;
   padding: 0.25rem;
   border-radius: 4px;
-
+  color: white;
+  font-weight: 600;
+  letter-spacing:  .5px;
+  outline: none;
+  border: none;
 }
   
 
@@ -46,6 +50,7 @@ color: black;
 
 
 button {
+  cursor: pointer;
   min-width: 100px;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -57,6 +62,6 @@ button {
 }
 
 button:hover{
-  background-color: rgba(154, 235, 61, 1);
+  background-color: rgb(171, 231, 103);
 }
 
