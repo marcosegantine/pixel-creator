@@ -6,7 +6,7 @@ const App = () => {
   const [undidList, setUndidList] = useState([]);
   const [dotColor, setDotColor] = useState('#000');
 
-  function handleClick(event) {
+  function handleCreatePixel(event) {
     const newDot = {
       clientX: event.clientX,
       clientY: event.clientY,
@@ -16,6 +16,7 @@ const App = () => {
     setUndidList([]);
   }
 
+  
   function handleUndo(event) {
     event.stopPropagation();
 
@@ -37,20 +38,24 @@ const App = () => {
   function clearWindow(event) {
     event.stopPropagation();
     setCreateDot([]);
+    setUndidList([]);
   }
 
   function handleDotColor(event) {
-    event.stopPropagation();
     setDotColor(event.target.value);
+  }
+  function handleClick(event) {
+    event.stopPropagation();
   }
 
   return (
     <>
-    <div id='commands-container'>
+    <div id="commands-container"  onClick={handleCreatePixel}>
 
-      <form id="colorSelector">
+      <form id="colorSelector" >
         <label htmlFor="color">Selecione uma cor</label>
         <select
+          onClick={handleClick}
           style={{ backgroundColor: dotColor, color: 'white' }}
           id="color"
           type="color"
@@ -77,7 +82,7 @@ const App = () => {
         </select>
       </form>
 
-      <div className="pixels-container" onClick={handleClick}>
+      <div id="pixels-container">
         <form id="btns">
           <button
             type="button"
@@ -98,25 +103,26 @@ const App = () => {
           <button
             type="button"
             onClick={clearWindow}
-            disabled={createDot.length === 0 ? true : false}
+            disabled={createDot.length === 0 && undidList.length === 0 ? true : false}
           >
             Limpar
           </button>
         </form>
     </div>
 
-
-        {createDot.map((item, index) => (
-          <span
-            key={index}
-            className="dot"
-            style={{
-              left: item.clientX,
-              top: item.clientY,
-              backgroundColor: item.color,
-            }}
-          />
-        ))}
+    {
+      !createDot.length ? <div className='message-start'>Click em qualquer lugar!!!</div> : (createDot.map((item, index) => (
+        <span
+          key={index}
+          className="dot"
+          style={{
+            left: item.clientX,
+            top: item.clientY,
+            backgroundColor: item.color,
+          }}
+        />
+      )))
+    }
       </div>
     </>
   );
