@@ -46,6 +46,8 @@ const App = () => {
 
   return (
     <>
+    <div id='commands-container'>
+
       <form id="colorSelector">
         <label htmlFor="color">Selecione uma cor</label>
         <select
@@ -75,7 +77,7 @@ const App = () => {
         </select>
       </form>
 
-      <div className="container" onClick={handleClick}>
+      <div className="pixels-container" onClick={handleClick}>
         <form id="btns">
           <button
             type="button"
@@ -101,6 +103,8 @@ const App = () => {
             Limpar
           </button>
         </form>
+    </div>
+
 
         {createDot.map((item, index) => (
           <span
